@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Favorite Person</title>
+    <title>Catherine's Valentines Day 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,7 +22,6 @@
             scroll-behavior: smooth;
         }
 
-        /* NEW: Sticky Header Logic */
         header {
             position: fixed;
             top: 0;
@@ -76,7 +75,6 @@
             max-width: 600px;
         }
 
-        /* NEW: Image Gallery Styling */
         .gallery {
             padding: 100px 20px;
             display: flex;
@@ -115,7 +113,6 @@
             font-size: 1.1rem;
         }
 
-        /* Floating Hearts Animation (Stays as is) */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -141,7 +138,7 @@
 <body>
 
     <header id="main-header">
-        <h1>Happy Valentine's Day, [Name]</h1>
+        <h1>HAPPY VALENTINES DAY MY LOVE</h1>
     </header>
 
     <div class="floating-hearts" id="hearts-container"></div>
@@ -149,9 +146,8 @@
     <div class="container" id="hero">
         <div class="personal-note">
             <span style="font-size: 2rem; color: var(--accent-color);">❤</span>
-            <h1>Happy Valentine's Day, [Name]</h1>
-            <p>"In all the world, there is no heart for me like yours."</p>
-            <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.7;">Keep scrolling down...</p>
+            <h1>HAPPY VALENTINES DAY MY LOVE</h1>
+            <p>I love you soooo much</p>
         </div>
     </div>
 
@@ -195,20 +191,24 @@
         const revealContainers = document.querySelectorAll('.reveal-container');
 
         const observerOptions = {
-            threshold: 0.15 // Triggers when 15% of the image is visible
+            threshold: 0.1, // Trigger when 10% is visible
+            rootMargin: "0px 0px -50px 0px" // Slightly offsets the trigger for a smoother feel
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Reveal image
                     entry.target.classList.add('active');
+                } else {
+                    // Hide image when scrolled away (Up or Down)
+                    entry.target.classList.remove('active');
                 }
             });
         }, observerOptions);
 
         revealContainers.forEach(container => observer.observe(container));
 
-        // NEW: Detect scroll to show/hide header
         window.addEventListener('scroll', () => {
             const heroBottom = hero.getBoundingClientRect().bottom;
             if (heroBottom < 100) {
